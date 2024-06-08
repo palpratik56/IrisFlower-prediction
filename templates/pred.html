@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict</title>
+</head>
+<body>
+    <h1 style="text-align: center; font-weight: 200%; color: rgb(0, 17, 255)">Welcome to the Predict page!</h1>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div>{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form action="/" method="post" style="text-align: center; font-size: 110%">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.sl.label }}
+            {{ form.sl }}
+            {% if form.sl.errors %}
+                {% for error in form.sl.errors %}
+                    <div>{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <br>
+        <div>
+            {{ form.sw.label }}
+            {{ form.sw }}
+            {% if form.sw.errors %}
+                {% for error in form.sw.errors %}
+                    <div>{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <br>
+        <div>
+            {{ form.pl.label }}
+            {{ form.pl }}
+            {% if form.pl.errors %}
+                {% for error in form.pl.errors %}
+                    <div>{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <br>
+        <div>
+            {{ form.pw.label }}
+            {{ form.pw }}
+            {% if form.pw.errors %}
+                {% for error in form.pw.errors %}
+                    <div>{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <br>
+        <div>{{ form.sub() }}</div>
+        <br>
+        <div style="font-size: 110%; color: rgba(255, 123, 0, 0.877)">{{ out }}</div>
+        <br>
+        <div><a href="{{url_for('home')}}">Refresh form</a></div>
+    </form>
+</body>
+</html>
